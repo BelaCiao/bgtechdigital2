@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowRight, ChevronRight, Monitor, Globe, MessageSquare, RefreshCcw } from 'lucide-react';
+import { ArrowRight, ChevronRight, Monitor, Globe, MessageSquare, RefreshCcw, Bot } from 'lucide-react';
 import ParticleBackground from './ParticleBackground';
 
 const Hero: React.FC = () => {
-  const [selection, setSelection] = useState<'site' | 'agency' | null>(null);
+  const [selection, setSelection] = useState<'site' | 'agency' | 'secretaria' | null>(null);
 
   const handleWhatsapp = () => {
     const phoneNumber = "5553999335369";
@@ -13,10 +13,30 @@ const Hero: React.FC = () => {
       text = "Olá! Gostaria de orçar um Site de Alta Performance ou Software.";
     } else if (selection === 'agency') {
       text = "Olá! Tenho interesse no Agenciamento da minha Presença Digital.";
+    } else if (selection === 'secretaria') {
+      text = "Olá! Quero implementar a Secretaria IA para atendimento inicial da minha empresa.";
     }
 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
+  };
+
+  const getSelectionColor = () => {
+    if (selection === 'site') return 'bg-bgtech-blue';
+    if (selection === 'agency') return 'bg-bgtech-red';
+    return 'bg-purple-600';
+  };
+
+  const getSelectionIcon = () => {
+    if (selection === 'site') return <Monitor className="w-5 h-5 text-bgtech-blue" />;
+    if (selection === 'agency') return <Globe className="w-5 h-5 text-bgtech-red" />;
+    return <Bot className="w-5 h-5 text-purple-500" />;
+  };
+
+  const getSelectionText = () => {
+    if (selection === 'site') return 'Site & Software';
+    if (selection === 'agency') return 'Agenciamento Digital';
+    return 'Secretaria IA';
   };
 
   return (
@@ -58,7 +78,7 @@ const Hero: React.FC = () => {
         </p>
 
         {/* Interactive Quiz / CTA Section */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="glass-panel p-1 rounded-2xl bg-gradient-to-b from-gray-800/50 to-black/50 border border-white/10 backdrop-blur-xl">
              <div className="bg-bgtech-dark/80 rounded-xl p-5 md:p-8 transition-all duration-500">
                 
@@ -69,7 +89,7 @@ const Hero: React.FC = () => {
                       Qual seu objetivo principal hoje?
                     </h3>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <button 
                         onClick={() => setSelection('site')}
                         className="group relative p-5 md:p-6 rounded-xl border border-white/5 hover:border-bgtech-blue/50 bg-gray-900/50 hover:bg-bgtech-blue/10 transition-all duration-300 text-left flex flex-col items-center md:items-start active:scale-[0.98]"
@@ -93,6 +113,18 @@ const Hero: React.FC = () => {
                         <p className="text-xs md:text-sm text-gray-400 text-center md:text-left">Quero melhorar minha presença e vendas online.</p>
                         <div className="absolute inset-0 border-2 border-transparent group-hover:border-bgtech-red/30 rounded-xl transition-all duration-500"></div>
                       </button>
+
+                      <button 
+                        onClick={() => setSelection('secretaria')}
+                        className="group relative p-5 md:p-6 rounded-xl border border-white/5 hover:border-purple-500/50 bg-gray-900/50 hover:bg-purple-500/10 transition-all duration-300 text-left flex flex-col items-center md:items-start active:scale-[0.98]"
+                      >
+                        <div className="p-3 rounded-lg bg-purple-500/20 text-purple-500 mb-3 md:mb-4 group-hover:scale-110 transition-transform">
+                          <Bot className="w-6 h-6" />
+                        </div>
+                        <h4 className="text-base md:text-lg font-bold text-white mb-1">Secretaria IA</h4>
+                        <p className="text-xs md:text-sm text-gray-400 text-center md:text-left">Quero atendimento inicial para minha empresa.</p>
+                        <div className="absolute inset-0 border-2 border-transparent group-hover:border-purple-500/30 rounded-xl transition-all duration-500"></div>
+                      </button>
                     </div>
                   </div>
                 ) : (
@@ -100,14 +132,14 @@ const Hero: React.FC = () => {
                     <div className="mb-6 text-center">
                       <span className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2 block">Você selecionou:</span>
                       <div className="flex items-center justify-center space-x-2 text-lg md:text-xl font-bold text-white">
-                        {selection === 'site' ? <Monitor className="w-5 h-5 text-bgtech-blue" /> : <Globe className="w-5 h-5 text-bgtech-red" />}
-                        <span>{selection === 'site' ? 'Site & Software' : 'Agenciamento Digital'}</span>
+                        {getSelectionIcon()}
+                        <span>{getSelectionText()}</span>
                       </div>
                     </div>
 
                     <button 
                       onClick={handleWhatsapp}
-                      className={`group relative px-8 py-4 w-full md:w-auto overflow-hidden rounded-sm ${selection === 'site' ? 'bg-bgtech-blue' : 'bg-bgtech-red'} active:scale-[0.98] transition-transform`}
+                      className={`group relative px-8 py-4 w-full md:w-auto overflow-hidden rounded-sm ${getSelectionColor()} active:scale-[0.98] transition-transform`}
                     >
                       <div className="absolute inset-0 w-0 bg-white transition-all duration-[250ms] ease-out group-hover:w-full opacity-10"></div>
                       <span className="relative flex items-center justify-center text-white font-display font-bold tracking-wider uppercase text-base md:text-lg">

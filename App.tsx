@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import PhysicalServices from './components/PhysicalServices';
 import Showcase from './components/Showcase';
 import Timeline from './components/Timeline';
 import Pricing from './components/Pricing';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <Services />
+        <PhysicalServices />
         <Showcase />
         <Timeline />
         <Pricing onSelectPlan={handleSelectPlan} />

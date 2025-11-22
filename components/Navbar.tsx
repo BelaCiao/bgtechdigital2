@@ -40,10 +40,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {['Serviços', 'Showcase', 'Processo', 'Planos'].map((item) => (
+          {['Serviços', 'Infra', 'Showcase', 'Processo', 'Planos'].map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`#${item.toLowerCase().replace(' ', '-')}`}
               className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
             >
               {item}
@@ -73,10 +73,10 @@ const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-bgtech-dark/95 backdrop-blur-xl border-b border-white/10">
           <div className="px-4 py-6 space-y-4 flex flex-col items-center">
-            {['Serviços', 'Showcase', 'Processo', 'Planos'].map((item) => (
+            {['Serviços', 'Infra', 'Showcase', 'Processo', 'Planos'].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-lg font-medium text-gray-300 hover:text-bgtech-red transition-colors"
               >

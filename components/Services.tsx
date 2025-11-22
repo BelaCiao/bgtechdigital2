@@ -1,29 +1,39 @@
 import React from 'react';
-import { Zap, Bot, Search, Smartphone, Database, ShieldCheck } from 'lucide-react';
+import { Zap, Bot, Search, Smartphone, Database, ShieldCheck, Sparkles } from 'lucide-react';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  color: 'red' | 'blue';
+  color: 'red' | 'blue' | 'purple';
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, color }) => {
-  const isRed = color === 'red';
+  const colorClasses = {
+    red: 'bg-bgtech-red',
+    blue: 'bg-bgtech-blue',
+    purple: 'bg-purple-600'
+  };
+
+  const textClasses = {
+    red: 'text-bgtech-red bg-bgtech-red/20',
+    blue: 'text-bgtech-blue bg-bgtech-blue/20',
+    purple: 'text-purple-400 bg-purple-500/20'
+  };
   
   return (
     <div className="group relative p-1 rounded-xl bg-gradient-to-b from-white/10 to-transparent hover:from-current transition-all duration-500">
-      <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${isRed ? 'bg-bgtech-red' : 'bg-bgtech-blue'}`}></div>
+      <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 ${colorClasses[color]}`}></div>
       <div className="relative h-full glass-panel p-8 rounded-lg overflow-hidden flex flex-col justify-between group-hover:border-white/20 transition-colors">
         <div>
-          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300 ${isRed ? 'bg-bgtech-red/20 text-bgtech-red' : 'bg-bgtech-blue/20 text-bgtech-blue'}`}>
+          <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300 ${textClasses[color]}`}>
             {icon}
           </div>
           <h3 className="text-2xl font-display font-bold text-white mb-3">{title}</h3>
           <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
         </div>
         
-        <div className={`mt-6 h-1 w-12 rounded-full transition-all duration-500 group-hover:w-full ${isRed ? 'bg-bgtech-red' : 'bg-bgtech-blue'}`}></div>
+        <div className={`mt-6 h-1 w-12 rounded-full transition-all duration-500 group-hover:w-full ${colorClasses[color]}`}></div>
       </div>
     </div>
   );
@@ -38,10 +48,10 @@ const Services: React.FC = () => {
       color: 'red' as const
     },
     {
-      icon: <Bot className="w-6 h-6" />,
-      title: "IA & Chatbots",
-      description: "Integração de modelos LLM (Gemini/GPT) treinados na sua base de conhecimento para atendimento 24/7 e automação de vendas.",
-      color: 'blue' as const
+      icon: <Sparkles className="w-6 h-6" />,
+      title: "LIA IA (GPT-5)",
+      description: "Sua nova secretária inteligente. Baseada no motor GPT-5, ela atende clientes, agenda reuniões e realiza vendas complexas 24h por dia.",
+      color: 'purple' as const
     },
     {
       icon: <Search className="w-6 h-6" />,

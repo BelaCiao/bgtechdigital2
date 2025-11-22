@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, Server } from 'lucide-react';
 
 const PricingCard: React.FC<{
   title: string;
@@ -46,7 +46,7 @@ const PricingCard: React.FC<{
             )}
         </div>
         <p className="text-gray-500 text-sm mt-2">
-          {isEnterprise ? 'Para quem quer liderar o mercado' : 'Pagamento Único ou Parcelado'}
+          {isEnterprise ? 'Para quem quer liderar o mercado' : 'Pagamento Único'}
         </p>
       </div>
 
@@ -54,7 +54,7 @@ const PricingCard: React.FC<{
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start text-sm text-gray-300">
             <Check className={`w-5 h-5 mr-3 shrink-0 ${isRecommended ? 'text-bgtech-red' : isEnterprise ? 'text-purple-400' : 'text-gray-500'}`} />
-            {feature}
+            <span dangerouslySetInnerHTML={{ __html: feature }}></span>
           </li>
         ))}
       </ul>
@@ -69,7 +69,7 @@ const PricingCard: React.FC<{
             : 'border border-gray-600 text-white hover:bg-gray-800'
         }`}
       >
-        {isEnterprise ? 'Solicitar LIA IA' : 'Comprar Agora'}
+        {isEnterprise ? 'Solicitar LIA IA' : 'Iniciar Agora'}
       </button>
     </div>
   );
@@ -84,22 +84,22 @@ const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
     <section id="planos" className="py-24 bg-gradient-to-b from-transparent to-gray-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-display font-bold text-white mb-4">Investimento Inteligente</h2>
-          <p className="text-gray-400">Escolha o nível de poder que sua marca precisa hoje.</p>
+          <h2 className="text-4xl font-display font-bold text-white mb-4">Investimento Estratégico</h2>
+          <p className="text-gray-400">Soluções de infraestrutura e presença digital escalonadas para seu momento.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
           <PricingCard
             title="Site Express"
             price="500"
-            onSelect={() => onSelectPlan({ name: 'Site Express (One-Page)', price: '500' })}
+            onSelect={() => onSelectPlan({ name: 'Site Express (Vercel)', price: '500' })}
             features={[
-              "Landing Page de Alta Conversão",
-              "Design Moderno & Responsivo",
-              "Botões de WhatsApp Integrados",
-              "Hospedagem Gratuita (1 ano)",
-              "Entrega em até 72h",
-              "Ideal para Autônomos"
+              "Landing Page (One-Page)",
+              "<strong>Hospedagem Vercel Cloud</strong> (Grátis)",
+              "Design Responsivo & Veloz",
+              "Botão WhatsApp Flutuante",
+              "Sem custos mensais de servidor",
+              "Ideal para: Autônomos e Info"
             ]}
           />
           <PricingCard
@@ -108,27 +108,27 @@ const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
             isRecommended={true}
             onSelect={() => onSelectPlan({ name: 'Pack Presença 360º', price: '2.000' })}
             features={[
-              "Tudo do plano Site Express",
-              "Criação de Redes Sociais (Insta/Face)",
-              "20 Artes High-End (Feed/Stories)",
+              "Site Profissional Multi-Páginas",
+              "<strong>Hospedagem Premium BGTECH</strong>",
+              "Suporte & Manutenção Técnica",
+              "Otimização Google (SEO Avançado)",
               "Cadastro Google Meu Negócio",
-              "Copywriting Persuasivo",
-              "Bio Otimizada e Destaques",
-              "Estratégia de Lançamento"
+              "Domínio Profissional (1º ano Grátis)",
+              "Ideal para: Pequenas Empresas"
             ]}
           />
           <PricingCard
-            title="LIA IA & Software"
+            title="Ecosystem & IA"
             price="Sob Medida"
             isEnterprise={true}
             onSelect={() => onSelectPlan({ name: 'LIA IA System', price: 'Sob Medida' })}
             features={[
-              "Licença LIA IA (Motor GPT-5)",
-              "Atendimento e Vendas 24/7",
-              "Agendamento Automático",
-              "Integração c/ WhatsApp Business",
-              "Painel Administrativo Custom",
-              "Aplicação Web Completa (SaaS)"
+              "Sistemas Web Complexos (SaaS)",
+              "<strong>Infraestrutura Dedicada (AWS/Azure)</strong>",
+              "Integração LIA IA (GPT-5)",
+              "Automação de Vendas Completa",
+              "Painel Administrativo Próprio",
+              "Consultoria de Escala Digital"
             ]}
           />
         </div>

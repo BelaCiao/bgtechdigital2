@@ -85,7 +85,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
           <input 
             type="text" 
             placeholder="Como no cartão"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
+            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-base text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
             value={userData.name}
             onChange={(e) => setUserData({...userData, name: e.target.value})}
           />
@@ -98,7 +98,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
           <input 
             type="email" 
             placeholder="para envio da nota fiscal"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
+            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-base text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
             value={userData.email}
             onChange={(e) => setUserData({...userData, email: e.target.value})}
           />
@@ -111,7 +111,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
           <input 
             type="tel" 
             placeholder="(00) 00000-0000"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
+            className="w-full bg-gray-900 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-base text-white focus:border-bgtech-blue focus:outline-none focus:ring-1 focus:ring-bgtech-blue transition-colors"
             value={userData.phone}
             onChange={(e) => setUserData({...userData, phone: e.target.value})}
           />
@@ -120,7 +120,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
       <button 
         onClick={() => isConsultation ? handleProcessPayment() : setStep(2)}
         disabled={!userData.name || !userData.email || !userData.phone}
-        className={`w-full mt-4 font-bold py-3 rounded-lg transition-all flex items-center justify-center uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed ${
+        className={`w-full mt-4 font-bold py-3 rounded-lg transition-all flex items-center justify-center uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] ${
           isConsultation 
             ? 'bg-purple-600 hover:bg-purple-700 text-white' 
             : 'bg-bgtech-red hover:bg-bgtech-darkRed text-white'
@@ -136,7 +136,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
       <div className="grid grid-cols-2 gap-4">
         <button 
           onClick={() => setPaymentMethod('pix')}
-          className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all relative overflow-hidden group ${
+          className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all relative overflow-hidden group active:scale-[0.98] ${
             paymentMethod === 'pix' 
               ? 'bg-bgtech-blue/10 border-bgtech-blue text-white shadow-[0_0_15px_rgba(0,74,173,0.3)]' 
               : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-500'
@@ -148,7 +148,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
         </button>
         <button 
           onClick={() => setPaymentMethod('card')}
-          className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all relative overflow-hidden ${
+          className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all relative overflow-hidden active:scale-[0.98] ${
             paymentMethod === 'card' 
               ? 'bg-bgtech-blue/10 border-bgtech-blue text-white shadow-[0_0_15px_rgba(0,74,173,0.3)]' 
               : 'bg-gray-900 border-gray-700 text-gray-400 hover:border-gray-500'
@@ -174,7 +174,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
               <div className="text-xs text-gray-500 text-center mb-2">Ou use o Pix Copia e Cola</div>
               <button 
                 onClick={handlePixCopy}
-                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-lg flex items-center justify-center font-mono text-sm transition-colors border border-gray-300 border-dashed"
+                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-lg flex items-center justify-center font-mono text-sm transition-colors border border-gray-300 border-dashed active:scale-[0.98]"
               >
                 {pixCopied ? (
                   <><Check className="w-4 h-4 mr-2 text-green-600" /> Código Copiado!</>
@@ -186,7 +186,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
 
            <button 
              onClick={handleProcessPayment}
-             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg uppercase tracking-wider text-sm mt-2"
+             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg uppercase tracking-wider text-sm mt-2 active:scale-[0.98]"
            >
              Já fiz o pagamento
            </button>
@@ -201,7 +201,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
                   type="text" 
                   maxLength={19}
                   placeholder="0000 0000 0000 0000"
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:border-bgtech-blue focus:outline-none"
+                  className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-base text-white focus:border-bgtech-blue focus:outline-none"
                   value={cardData.number}
                   onChange={(e) => setCardData({...cardData, number: formatCardNumber(e.target.value)})}
                 />
@@ -213,7 +213,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
               <input 
                 type="text" 
                 placeholder="NOME COMO NO CARTÃO"
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 px-4 text-white focus:border-bgtech-blue focus:outline-none uppercase"
+                className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 px-4 text-base text-white focus:border-bgtech-blue focus:outline-none uppercase"
                 value={cardData.holder}
                 onChange={(e) => setCardData({...cardData, holder: e.target.value.toUpperCase()})}
               />
@@ -228,7 +228,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
                     type="text" 
                     maxLength={5}
                     placeholder="MM/AA"
-                    className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-9 pr-2 text-white focus:border-bgtech-blue focus:outline-none"
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-9 pr-2 text-base text-white focus:border-bgtech-blue focus:outline-none"
                     value={cardData.expiry}
                     onChange={(e) => setCardData({...cardData, expiry: formatExpiry(e.target.value)})}
                   />
@@ -242,7 +242,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
                     type="text" 
                     maxLength={4}
                     placeholder="123"
-                    className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-9 pr-2 text-white focus:border-bgtech-blue focus:outline-none"
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg py-2.5 pl-9 pr-2 text-base text-white focus:border-bgtech-blue focus:outline-none"
                     value={cardData.cvv}
                     onChange={(e) => setCardData({...cardData, cvv: e.target.value.replace(/\D/g, '')})}
                   />
@@ -253,7 +253,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
            <button 
              onClick={handleProcessPayment}
              disabled={!cardData.number || !cardData.holder || !cardData.expiry || !cardData.cvv}
-             className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg mt-4 flex items-center justify-center uppercase tracking-wider shadow-lg"
+             className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg mt-4 flex items-center justify-center uppercase tracking-wider shadow-lg active:scale-[0.98]"
            >
              <Lock className="w-4 h-4 mr-2" /> Pagar R$ {price}
            </button>
@@ -266,7 +266,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
         </div>
       )}
       
-      <button onClick={() => setStep(1)} className="w-full text-gray-500 text-xs hover:text-white mt-2">
+      <button onClick={() => setStep(1)} className="w-full text-gray-500 text-xs hover:text-white mt-2 p-2">
         Voltar para dados pessoais
       </button>
     </div>
@@ -296,7 +296,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
 
       <button 
         onClick={onClose}
-        className={`w-full font-bold py-3 rounded-lg transition-colors uppercase tracking-widest text-sm ${
+        className={`w-full font-bold py-3 rounded-lg transition-colors uppercase tracking-widest text-sm active:scale-[0.98] ${
           isConsultation ? 'bg-purple-600 hover:bg-purple-700 text-white' : 'bg-bgtech-blue hover:bg-blue-700 text-white'
         }`}
       >
@@ -306,13 +306,13 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
   );
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:px-4">
       <div 
         className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity"
         onClick={onClose}
       ></div>
 
-      <div className={`relative w-full max-w-md bg-bgtech-dark border rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] ${isConsultation ? 'border-purple-500/30' : 'border-gray-700'}`}>
+      <div className={`relative w-full sm:max-w-md bg-bgtech-dark border-t sm:border border-gray-700 sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] rounded-t-2xl ${isConsultation ? 'sm:border-purple-500/30 border-purple-500/30' : 'sm:border-gray-700 border-gray-700'}`}>
         {/* Header */}
         <div className="bg-gray-900 p-4 border-b border-gray-800 flex justify-between items-center shrink-0">
           <div className="flex items-center space-x-2">
@@ -321,13 +321,13 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
               {isConsultation ? 'Ambiente Seguro LIA IA' : 'Checkout Seguro 256-bit'}
             </span>
           </div>
-          <button onClick={onClose} className="text-gray-500 hover:text-white">
+          <button onClick={onClose} className="text-gray-500 hover:text-white p-2">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Body (Scrollable) */}
-        <div className="p-6 overflow-y-auto custom-scrollbar">
+        <div className="p-6 overflow-y-auto custom-scrollbar pb-12 sm:pb-6">
           {/* Progress Indicator */}
           {paymentStatus !== 'success' && !isConsultation && (
             <div className="flex items-center justify-center mb-8 space-x-2">
@@ -368,7 +368,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, planName, 
         
         {/* Footer Security Badge */}
         {paymentStatus !== 'success' && (
-           <div className="bg-gray-900/80 p-3 border-t border-gray-800 text-center">
+           <div className="bg-gray-900/80 p-3 border-t border-gray-800 text-center sm:rounded-b-2xl pb-8 sm:pb-3">
               <p className="text-[10px] text-gray-600 flex items-center justify-center gap-2">
                  <Lock className="w-3 h-3" /> 
                  Seus dados estão protegidos por criptografia de ponta a ponta.
